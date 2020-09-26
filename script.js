@@ -42,8 +42,16 @@ function renderQuestions(j){
     }
 }
 
-function checkCorrect(){
-    ///think about args
+function checkCorrect(event){
+    let element = event.target;
+    let ind = parseInt( element.parentElement.getAttribute("data-index"));
+    console.log("chosen answer is "+ind);
+    if (ind ===questions[qNumber].correct){
+        commentEl.textContent = "Correct";
+    }
+    else{
+        commentEl.textContent = "Wrong"
+    }
 }
 
 function finish(){
@@ -55,7 +63,7 @@ function finish(){
 function nextQuestion(event){
     event.preventDefault();
     if(event.target.matches("button")&&(event.target.textContent!=="start")){
-        checkCorrect();
+        checkCorrect(event);
         qNumber++;
         if (qNumber < questions.length){
             console.log("render question number "+qNumber);

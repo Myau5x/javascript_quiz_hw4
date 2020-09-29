@@ -9,7 +9,7 @@ var qNumber = 0;
 var scores = 0;
 ///change to []
 let highScores = [];
-
+let stopTimer = false;
 
   
   function storeHigh() {
@@ -79,6 +79,7 @@ function finish(){
     var h3 = document.createElement("h3")
     h3.textContent = "Your score is "+scores;
     mainEl.appendChild(h3);
+    stopTimer = true;
     
     inForm.addEventListener("submit", function(event) {
         event.preventDefault();
@@ -119,6 +120,9 @@ function setTime() {
       if(timer <= 0) {
         clearInterval(timerInterval);
         finish();
+      }
+      if (stopTimer){
+          clearInterval(timerInterval);
       }
   
     }, 1000);

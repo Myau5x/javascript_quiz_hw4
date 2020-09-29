@@ -8,7 +8,7 @@ let timerEl = document.querySelector("#timer");
 var qNumber = 0;
 var scores = 0;
 ///change to []
-let highScores = [{name:'OI', score:'50'}];
+let highScores = [];
 
 
   
@@ -21,7 +21,8 @@ let highScores = [{name:'OI', score:'50'}];
 
 function start(event){
     event.preventDefault();
-    console.log("start from 1st question")
+    console.log("start from 1st question");
+    setTime();
     renderQuestions(qNumber);
 }
 
@@ -75,6 +76,9 @@ function finish(){
     mainEl.innerHTML = '<form id="in-form" method="POST"> <label for="initials">Add a Initials:</label> <input type="text" placeholder="Your initials" name="initials" id="initials" /></form>'
     var inInput = document.querySelector("#initials");
     var inForm = document.querySelector("#in-form");
+    var h3 = document.createElement("h3")
+    h3.textContent = "Your score is "+scores;
+    mainEl.appendChild(h3);
     
     inForm.addEventListener("submit", function(event) {
         event.preventDefault();
@@ -88,6 +92,13 @@ function finish(){
         }
       */
         // Add new todoText to todos array, clear the input
+        var storedHigh = JSON.parse(localStorage.getItem("highScores"));
+  
+    // If todos were retrieved from localStorage, update the todos array to it
+        if (storedHigh !== null) {
+        highScores = storedHigh;
+        }
+
         highScores.push({name:in_text.toUpperCase(), score:scores});
         ///todoInput.value = "";
       
@@ -99,6 +110,20 @@ function finish(){
 
 
 }
+
+function setTime() {
+    var timerInterval = setInterval(function() {
+      timer--;
+      timerEl.textContent = timer ;
+  
+      if(timer <= 0) {
+        clearInterval(timerInterval);
+        finish();
+      }
+  
+    }, 1000);
+  }
+
 
 
 function nextQuestion(event){

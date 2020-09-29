@@ -1,7 +1,8 @@
 var mainEl = document.querySelector("main");
+var quizBtn = document.querySelector("#quiz");
+var clearBtn = document.querySelector("#clear");
 
-
-let highScores = [{name:'OI', score:'50'}];
+let highScores = [];
 function initHigh() {
     // Get stored highScores from localStorage
     // Parsing the JSON string to an object
@@ -16,7 +17,7 @@ function initHigh() {
     renderHigh();
   }
 
-  function renderHigh(){
+function renderHigh(){
     mainEl.innerHTML = "";
     var ulEL = document.createElement("ul");
     
@@ -32,3 +33,17 @@ function initHigh() {
 }
 
 initHigh();
+
+quizBtn.addEventListener("click",function(){
+    window.location.href = "./index.html"
+})
+
+clearBtn.addEventListener("click",function(){
+    localStorage.removeItem('highScores');
+    mainEl.innerHTML = "";
+    
+    var h2 = document.createElement("h2");
+    h2.textContent = "Highscores";
+    mainEl.appendChild(h2);
+    
+})

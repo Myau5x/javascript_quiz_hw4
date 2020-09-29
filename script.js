@@ -10,39 +10,14 @@ var scores = 0;
 ///change to []
 let highScores = [{name:'OI', score:'50'}];
 
-function initHigh() {
-    // Get stored highScores from localStorage
-    // Parsing the JSON string to an object
-    var storedHigh = JSON.parse(localStorage.getItem("highScores"));
-  
-    // If todos were retrieved from localStorage, update the todos array to it
-    if (storedHigh !== null) {
-      highScores = storedHigh;
-    }
-  
-    // Render todos to the DOM
-    renderHigh();
-  }
+
   
   function storeHigh() {
     // Stringify and set "todos" key in localStorage to todos array
     localStorage.setItem("highScores", JSON.stringify(highScores));
   }
 
-function renderHigh(){
-    mainEl.innerHTML = "";
-    var ulEL = document.createElement("ul");
-    
-    var h2 = document.createElement("h2");
-    h2.textContent = "Highscores";
-    mainEl.appendChild(h2);
-    mainEl.appendChild(ulEL);
-    for (var i=0;i<highScores.length;i++){
-        let li = document.createElement("li");
-        li.textContent = highScores[i].name +' '+highScores[i].score;
-        ulEL.appendChild(li);
-    }
-}
+
 
 function start(event){
     event.preventDefault();
@@ -89,6 +64,7 @@ function checkCorrect(event){
     else{
         commentEl.textContent = "Wrong";
         timer-=10;
+        timerEl.textContent = timer
     }
 }
 
@@ -96,7 +72,30 @@ function finish(){
     /// have to call after timer too
     /// show form to submit initials
     mainEl.innerHTML = "";
+    mainEl.innerHTML = '<form id="in-form" method="POST"> <label for="initials">Add a Initials:</label> <input type="text" placeholder="Your initials" name="initials" id="initials" /></form>'
+    var inInput = document.querySelector("#initials");
+    var inForm = document.querySelector("#in-form");
+    
+    inForm.addEventListener("submit", function(event) {
+        event.preventDefault();
+        
+        var in_text = inInput.value.trim();
+      
+        // Return from function early if submitted todoText is blank
+        /*
+        if (in_text === "") {
+          return;
+        }
+      */
+        // Add new todoText to todos array, clear the input
+        highScores.push({name:in_text.toUpperCase(), score:scores});
+        ///todoInput.value = "";
+      
+        // Store updated todos in localStorage, re-render the list
+        storeHigh();
+        window.location.href = "./highscores.html";
 
+      });
 
 
 }
@@ -113,7 +112,7 @@ function nextQuestion(event){
         else{
             finish();
             ///check move this to finish
-            initHigh();
+            //initHigh();
         }
     }
 }

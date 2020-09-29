@@ -11,6 +11,8 @@ function initHigh() {
     // If todos were retrieved from localStorage, update the todos array to it
     if (storedHigh !== null) {
       highScores = storedHigh;
+      highScores.sort(function(a,b){
+          return parseFloat(b.score) - parseFloat(a.score);})
     }
   
     // Render todos to the DOM

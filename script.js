@@ -1,4 +1,4 @@
-var questions = [{question: "Q1" , answers :["q1a1","q1a2","q1a3","q1a4"], correct: 3},{question: "Q2" , answers :["q2a1","q2a2","q2a3","q2a4"], correct: 2},{question: "Q3" , answers :["q3a1","q3a2","q3a3","q3a4"], correct: 1},{question: "Q4" , answers :["q4a1","q4a2","q4a3","q4a4"], correct: 3},{question: "Q5" , answers :["q5a1","q5a2","q5a3","q5a4"], correct: 0}];
+var questions = [{question: "What operator we use in JS to check that values are equal and have equal type" , answers :["=","==","===","===="], correct: 2},{question: "What is the right way to create array " , answers :["['a','b','c']","('a','b','c')","{'a','b','c'}"], correct: 0},{question: "Which of the following is a valid type of function javascript supports?" , answers :["named function","anonymous function","Both of the above","None of the above"], correct: 2},{question: "Which built-in method sorts the elements of an array?" , answers :["changeOrder(order)","sort()","order()","None of the above."], correct: 1},{question: "Q5" , answers :["q5a1","q5a2","q5a3","q5a4"], correct: 0}];
 var timer = 75;
 var startBtn = document.querySelector("#start");
 var mainEl = document.querySelector("main");
@@ -77,6 +77,7 @@ function finish(){
     var inInput = document.querySelector("#initials");
     var inForm = document.querySelector("#in-form");
     var h3 = document.createElement("h3")
+    scores = scores +Math.floor(timer/10);
     h3.textContent = "Your score is "+scores;
     mainEl.appendChild(h3);
     stopTimer = true;

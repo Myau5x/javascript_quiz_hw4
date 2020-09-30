@@ -4,8 +4,8 @@ Javascript quiz with highscores and timer.
 
 ### How  it look?
 
-![screenshot1](./Screenshot_gen_pass.png)
-![screenshot1](./Screenshot_gen_pass.png)
+![Quiz screenshot](./quiz.png)
+![Highscores screenshot](./high.png)
 
 
 ### Where it deployed?

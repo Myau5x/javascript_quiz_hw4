@@ -38,4 +38,4 @@ THEN I see a highscore table
 - `script2.js` &ndash; script that show sorted highscores
 
 ### Licence
-[MIT License](https://github.com/Myau5x/generate_password/blob/master/LICENSE)
+[MIT License](https://github.com/Myau5x/javascript_quiz_hw4/blob/master/LICENSE)

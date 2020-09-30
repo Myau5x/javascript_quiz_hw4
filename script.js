@@ -32,7 +32,7 @@ function renderQuestions(j){
     let q = questions[j];
     let ans = q.answers;
     var h2 = document.createElement("h2");
-    var ulEL = document.createElement("ul");
+    var ulEL = document.createElement("ol");
     mainEl.appendChild(h2);
     h2.textContent = q.question;
     mainEl.appendChild(ulEL);

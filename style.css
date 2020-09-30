@@ -2,3 +2,26 @@ button{
     color: white;
     background-color: rebeccapurple;
 }
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    background-color: white;
+  }
+  
+  li {
+    height: 50px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 5px;
+    background-color:#9768cc;
+    color: black;
+    font-size: 1.5em;
+    line-height: 1.5;
+  }
+
+  main, #comment, #btns{
+    width: 600px;
+    margin: 0 auto;
+    margin-top: 40px;
+  }
